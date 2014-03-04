@@ -22,7 +22,9 @@ namespace ConorFoxProject
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.Configuration.LazyLoadingEnabled = false;
             throw new UnintentionalCodeFirstException();
+          
         }
     
         public DbSet<Building> Buildings { get; set; }
@@ -43,5 +45,7 @@ namespace ConorFoxProject
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<RepeatType> RepeatTypes { get; set; }
         public DbSet<CourseModule> CourseModules { get; set; }
+        public DbSet<StaffEvent> StaffEvents { get; set; }
+        public DbSet<StudentEvent> StudentEvents { get; set; }
     }
 }

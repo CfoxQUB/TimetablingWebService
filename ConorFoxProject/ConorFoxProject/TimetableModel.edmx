@@ -20,7 +20,19 @@
           <EntitySet Name="RoomType" EntityType="TimetableDatabaseModel.Store.RoomType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Setting" EntityType="TimetableDatabaseModel.Store.Setting" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Staff" EntityType="TimetableDatabaseModel.Store.Staff" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StaffEvents" EntityType="TimetableDatabaseModel.Store.StaffEvents" store:Type="Tables" store:Schema="dbo" store:Name="StaffEvents">
+            <DefiningQuery>SELECT 
+      [StaffEvents].[EventId] AS [EventId], 
+      [StaffEvents].[StaffId] AS [StaffId]
+      FROM [dbo].[StaffEvents] AS [StaffEvents]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Student" EntityType="TimetableDatabaseModel.Store.Student" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StudentEvents" EntityType="TimetableDatabaseModel.Store.StudentEvents" store:Type="Tables" store:Schema="dbo" store:Name="StudentEvents">
+            <DefiningQuery>SELECT 
+      [StudentEvents].[EventId] AS [EventId], 
+      [StudentEvents].[StudentId] AS [StudentId]
+      FROM [dbo].[StudentEvents] AS [StudentEvents]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Time" EntityType="TimetableDatabaseModel.Store.Time" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="TimetableDatabaseModel.Store.User" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserType" EntityType="TimetableDatabaseModel.Store.UserType" store:Type="Tables" Schema="dbo" />
@@ -179,6 +191,17 @@
           <Property Name="LastActivity" Type="datetime" />
           <Property Name="Password" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'TimetableDatabase.dbo.StaffEvents' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="StaffEvents">
+          <Key>
+            <PropertyRef Name="EventId" />
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="StaffId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="StudentId" />
@@ -193,6 +216,17 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="LastActivity" Type="datetime" Nullable="false" />
           <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'TimetableDatabase.dbo.StudentEvents' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="StudentEvents">
+          <Key>
+            <PropertyRef Name="EventId" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Time">
           <Key>
@@ -248,6 +282,8 @@
           <EntitySet Name="UserTypes" EntityType="TimetableDatabaseModel.UserType" />
           <EntitySet Name="RepeatTypes" EntityType="TimetableDatabaseModel.RepeatType" />
           <EntitySet Name="CourseModules" EntityType="TimetableDatabaseModel.CourseModule" />
+          <EntitySet Name="StaffEvents" EntityType="TimetableDatabaseModel.StaffEvent" />
+          <EntitySet Name="StudentEvents" EntityType="TimetableDatabaseModel.StudentEvent" />
         </EntityContainer>
         <EntityType Name="Building">
           <Key>
@@ -448,6 +484,22 @@
           <Property Type="Int32" Name="CourseModuleId" Nullable="false" />
           <Property Type="Int32" Name="Course" Nullable="false" />
           <Property Type="Int32" Name="Module" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffEvent">
+          <Key>
+            <PropertyRef Name="EventId" />
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Type="Int32" Name="EventId" Nullable="false" />
+          <Property Type="Int32" Name="StaffId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentEvent">
+          <Key>
+            <PropertyRef Name="EventId" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Type="Int32" Name="EventId" Nullable="false" />
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -670,6 +722,22 @@
                 <ScalarProperty Name="Module" ColumnName="Module" />
                 <ScalarProperty Name="Course" ColumnName="Course" />
                 <ScalarProperty Name="CourseModuleId" ColumnName="CourseModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffEvents">
+            <EntityTypeMapping TypeName="TimetableDatabaseModel.StaffEvent">
+              <MappingFragment StoreEntitySet="StaffEvents">
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentEvents">
+            <EntityTypeMapping TypeName="TimetableDatabaseModel.StudentEvent">
+              <MappingFragment StoreEntitySet="StudentEvents">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -23,6 +23,8 @@
         <EntityTypeShape EntityType="TimetableDatabaseModel.UserType" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TimetableDatabaseModel.RepeatType" Width="1.5" PointX="6.5126357369649384" PointY="18.779322245521154" />
         <EntityTypeShape EntityType="TimetableDatabaseModel.CourseModule" Width="1.5" PointX="8.6166180784891431" PointY="9.482224826459877" />
+        <EntityTypeShape EntityType="TimetableDatabaseModel.StaffEvent" Width="1.5" PointX="1.5692884500926772" PointY="0.13453267520970325" />
+        <EntityTypeShape EntityType="TimetableDatabaseModel.StudentEvent" Width="1.5" PointX="1.2693429055015291" PointY="6.3567559599675034" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

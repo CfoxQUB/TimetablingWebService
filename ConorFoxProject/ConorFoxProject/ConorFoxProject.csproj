@@ -93,7 +93,13 @@
     <Compile Include="Staff.cs">
       <DependentUpon>TimetableModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StaffEvent.cs">
+      <DependentUpon>TimetableModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs">
+      <DependentUpon>TimetableModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentEvent.cs">
       <DependentUpon>TimetableModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Time.cs">
@@ -121,6 +127,7 @@
     <Compile Include="UserType.cs">
       <DependentUpon>TimetableModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="WebsiteService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
