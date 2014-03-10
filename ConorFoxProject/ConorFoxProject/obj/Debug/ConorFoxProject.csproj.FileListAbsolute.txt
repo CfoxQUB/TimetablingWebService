@@ -1,0 +1,16 @@
+J:\ConorFoxProject\ConorFoxProject\bin\Debug\ConorFoxProject.dll.config
+J:\ConorFoxProject\ConorFoxProject\bin\Debug\ConorFoxProject.dll
+J:\ConorFoxProject\ConorFoxProject\bin\Debug\ConorFoxProject.pdb
+J:\ConorFoxProject\ConorFoxProject\bin\Debug\EntityFramework.dll
+J:\ConorFoxProject\ConorFoxProject\bin\Debug\EntityFramework.xml
+J:\ConorFoxProject\ConorFoxProject\obj\Debug\ConorFoxProject.csprojResolveAssemblyReference.cache
+J:\ConorFoxProject\ConorFoxProject\obj\Debug\ConorFoxProject.dll
+J:\ConorFoxProject\ConorFoxProject\obj\Debug\ConorFoxProject.pdb
+C:\Users\Conor Fox\Desktop\Final Year Project\ConorFoxProject\ConorFoxProject\bin\Debug\ConorFoxProject.dll.config
+C:\Users\Conor Fox\Desktop\Final Year Project\ConorFoxProject\ConorFoxProject\bin\Debug\ConorFoxProject.dll
+C:\Users\Conor Fox\Desktop\Final Year Project\ConorFoxProject\ConorFoxProject\bin\Debug\ConorFoxProject.pdb
+C:\Users\Conor Fox\Desktop\Final Year Project\ConorFoxProject\ConorFoxProject\bin\Debug\EntityFramework.dll
+C:\Users\Conor Fox\Desktop\Final Year Project\ConorFoxProject\ConorFoxProject\bin\Debug\EntityFramework.xml
+C:\Users\Conor Fox\Desktop\Final Year Project\ConorFoxProject\ConorFoxProject\obj\Debug\ConorFoxProject.dll
+C:\Users\Conor Fox\Desktop\Final Year Project\ConorFoxProject\ConorFoxProject\obj\Debug\ConorFoxProject.pdb
+C:\Users\Conor Fox\Desktop\Final Year Project\ConorFoxProject\ConorFoxProject\obj\Debug\ConorFoxProject.csprojResolveAssemblyReference.cache

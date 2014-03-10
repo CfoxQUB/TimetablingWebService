@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TimetableDatabaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TimetableDatabase" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Buildings" EntityType="TimetableDatabaseModel.Building" />
+    <EntitySet Name="Courses" EntityType="TimetableDatabaseModel.Course" />
+    <EntitySet Name="Events" EntityType="TimetableDatabaseModel.Event" />
+    <EntitySet Name="EventStatusses" EntityType="TimetableDatabaseModel.EventStatuss" />
+    <EntitySet Name="EventTypes" EntityType="TimetableDatabaseModel.EventType" />
+    <EntitySet Name="Modules" EntityType="TimetableDatabaseModel.Module" />
+    <EntitySet Name="RecycledIds" EntityType="TimetableDatabaseModel.RecycledId" />
+    <EntitySet Name="RepeatEvents" EntityType="TimetableDatabaseModel.RepeatEvent" />
+    <EntitySet Name="Rooms" EntityType="TimetableDatabaseModel.Room" />
+    <EntitySet Name="RoomTypes" EntityType="TimetableDatabaseModel.RoomType" />
+    <EntitySet Name="Settings" EntityType="TimetableDatabaseModel.Setting" />
+    <EntitySet Name="Staffs" EntityType="TimetableDatabaseModel.Staff" />
+    <EntitySet Name="Students" EntityType="TimetableDatabaseModel.Student" />
+    <EntitySet Name="Times" EntityType="TimetableDatabaseModel.Time" />
+    <EntitySet Name="Users" EntityType="TimetableDatabaseModel.User" />
+    <EntitySet Name="UserTypes" EntityType="TimetableDatabaseModel.UserType" />
+    <EntitySet Name="RepeatTypes" EntityType="TimetableDatabaseModel.RepeatType" />
+    <EntitySet Name="CourseModules" EntityType="TimetableDatabaseModel.CourseModule" />
+  </EntityContainer>
+  <EntityType Name="Building">
+    <Key>
+      <PropertyRef Name="BuildingId" />
+    </Key>
+    <Property Name="BuildingId" Type="Int32" Nullable="false" />
+    <Property Name="BuildingName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="BuildingNumber" Type="Int32" />
+    <Property Name="AddressLine1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AddressLine2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="CourseName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CourseDescription" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Duration" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Creator" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <Property Name="EventTitle" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="EventDescription" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="EventType" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Time" Type="Int32" />
+    <Property Name="Duration" Type="Int32" />
+    <Property Name="Repeats" Type="Int32" />
+    <Property Name="LastUserEdited" Type="Int32" />
+    <Property Name="LastDateEdited" Type="DateTime" Precision="3" />
+    <Property Name="AdditionalNotes" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Type="Int32" Name="Room" />
+    <Property Type="Int32" Name="Attendants" />
+    <Property Type="Int32" Name="Course" />
+    <Property Type="Int32" Name="Module" />
+  </EntityType>
+  <EntityType Name="EventStatuss">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <Property Name="StatusName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="StatusDescription" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="EventType">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="TypeDescription" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Creator" Type="Int32" Nullable="false" />
+    <Property Name="LastEdited" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="ModuleId" />
+    </Key>
+    <Property Name="ModuleId" Type="Int32" Nullable="false" />
+    <Property Name="ModuleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleDescription" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Creator" Type="Int32" />
+    <Property Name="LastEdited" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="RecycledId">
+    <Key>
+      <PropertyRef Name="IdRecovered" />
+    </Key>
+    <Property Name="TableName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="IdRecovered" Type="Int32" Nullable="false" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="RepeatEvent">
+    <Key>
+      <PropertyRef Name="RepeatEventId" />
+    </Key>
+    <Property Name="RepeatEventId" Type="Int32" Nullable="false" />
+    <Property Name="EventId" Type="Int32" />
+    <Property Name="WeekBeginning" Type="DateTime" Precision="3" />
+    <Property Type="Int32" Name="RepeatType" />
+    <Property Type="DateTime" Name="WeekEnding" Precision="3" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="Int32" Nullable="false" />
+    <Property Name="RoomName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="RoomDescription" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Building" Type="Int32" />
+    <Property Name="RoomType" Type="Int32" />
+    <Property Type="Int32" Name="Capacity" />
+  </EntityType>
+  <EntityType Name="RoomType">
+    <Key>
+      <PropertyRef Name="RoomTypeId" />
+    </Key>
+    <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
+    <Property Name="RoomeTypeDescription" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Setting">
+    <Key>
+      <PropertyRef Name="SettingsId" />
+    </Key>
+    <Property Name="SettingsId" Type="Int32" Nullable="false" />
+    <Property Name="SettingName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="SettingDescription" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Creator" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="StaffId" />
+    </Key>
+    <Property Name="StaffId" Type="Int32" Nullable="false" />
+    <Property Name="StaffTitle" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="StaffForename" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="StaffSurname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="StaffEmail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Course" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="LastActivity" Type="DateTime" Precision="3" />
+    <Property Name="Password" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="StudentTitle" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="StudentForename" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="StudentSurname" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="StudentEmail" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Course" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastActivity" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Time">
+    <Key>
+      <PropertyRef Name="TimeId" />
+    </Key>
+    <Property Name="TimeId" Type="Int32" Nullable="false" />
+    <Property Name="TimeLiteral" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="TimeDescription" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserTitle" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="UserForename" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UserSurname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UserType" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="LastLogin" Type="DateTime" Precision="3" />
+    <Property Name="CurrentlyLoggedIn" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UserTypeId" />
+    </Key>
+    <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+    <Property Name="UserTypeDescription" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="RepeatType">
+    <Key>
+      <PropertyRef Name="RepeatTypeId" />
+    </Key>
+    <Property Type="Int32" Name="RepeatTypeId" Nullable="false" />
+    <Property Type="String" Name="RepeatDescription" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateDate" Precision="3" />
+    <Property Type="String" Name="RepeatTypeName" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CourseModule">
+    <Key>
+      <PropertyRef Name="CourseModuleId" />
+    </Key>
+    <Property Type="Int32" Name="CourseModuleId" Nullable="false" />
+    <Property Type="Int32" Name="Course" Nullable="false" />
+    <Property Type="Int32" Name="Module" Nullable="false" />
+  </EntityType>
+</Schema>

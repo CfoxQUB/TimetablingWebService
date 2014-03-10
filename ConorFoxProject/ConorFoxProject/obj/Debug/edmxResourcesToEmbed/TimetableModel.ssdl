@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TimetableDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TimetableDatabaseModelStoreContainer">
+    <EntitySet Name="Building" EntityType="TimetableDatabaseModel.Store.Building" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Course" EntityType="TimetableDatabaseModel.Store.Course" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CourseModule" EntityType="TimetableDatabaseModel.Store.CourseModule" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Event" EntityType="TimetableDatabaseModel.Store.Event" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EventStatuss" EntityType="TimetableDatabaseModel.Store.EventStatuss" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EventType" EntityType="TimetableDatabaseModel.Store.EventType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Module" EntityType="TimetableDatabaseModel.Store.Module" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RecycledIds" EntityType="TimetableDatabaseModel.Store.RecycledIds" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RepeatEvent" EntityType="TimetableDatabaseModel.Store.RepeatEvent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RepeatTypes" EntityType="TimetableDatabaseModel.Store.RepeatTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Room" EntityType="TimetableDatabaseModel.Store.Room" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoomType" EntityType="TimetableDatabaseModel.Store.RoomType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Setting" EntityType="TimetableDatabaseModel.Store.Setting" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Staff" EntityType="TimetableDatabaseModel.Store.Staff" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Student" EntityType="TimetableDatabaseModel.Store.Student" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Time" EntityType="TimetableDatabaseModel.Store.Time" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="TimetableDatabaseModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserType" EntityType="TimetableDatabaseModel.Store.UserType" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Building">
+    <Key>
+      <PropertyRef Name="BuildingId" />
+    </Key>
+    <Property Name="BuildingId" Type="int" Nullable="false" />
+    <Property Name="BuildingName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BuildingNumber" Type="int" />
+    <Property Name="AddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CourseDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Creator" Type="int" />
+  </EntityType>
+  <EntityType Name="CourseModule">
+    <Key>
+      <PropertyRef Name="CourseModuleId" />
+    </Key>
+    <Property Name="CourseModuleId" Type="int" Nullable="false" />
+    <Property Name="Course" Type="int" Nullable="false" />
+    <Property Name="Module" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="int" Nullable="false" />
+    <Property Name="EventTitle" Type="nvarchar" MaxLength="10" />
+    <Property Name="EventDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="EventType" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Time" Type="int" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="Repeats" Type="int" />
+    <Property Name="LastUserEdited" Type="int" />
+    <Property Name="LastDateEdited" Type="datetime" />
+    <Property Name="AdditionalNotes" Type="nvarchar" MaxLength="150" />
+    <Property Name="Status" Type="nvarchar" MaxLength="10" />
+    <Property Name="Room" Type="int" />
+    <Property Name="Attendants" Type="int" />
+    <Property Name="Course" Type="int" />
+    <Property Name="Module" Type="int" />
+  </EntityType>
+  <EntityType Name="EventStatuss">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="int" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusDescription" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="EventType">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="TypeDescription" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Creator" Type="int" Nullable="false" />
+    <Property Name="LastEdited" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="ModuleId" />
+    </Key>
+    <Property Name="ModuleId" Type="int" Nullable="false" />
+    <Property Name="ModuleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModuleDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Creator" Type="int" />
+    <Property Name="LastEdited" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RecycledIds">
+    <Key>
+      <PropertyRef Name="IdRecovered" />
+    </Key>
+    <Property Name="TableName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdRecovered" Type="int" Nullable="false" />
+    <Property Name="DateAdded" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RepeatEvent">
+    <Key>
+      <PropertyRef Name="RepeatEventId" />
+    </Key>
+    <Property Name="RepeatEventId" Type="int" Nullable="false" />
+    <Property Name="EventId" Type="int" />
+    <Property Name="RepeatType" Type="int" />
+    <Property Name="WeekBeginning" Type="datetime" />
+    <Property Name="WeekEnding" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RepeatTypes">
+    <Key>
+      <PropertyRef Name="RepeatTypeId" />
+    </Key>
+    <Property Name="RepeatTypeId" Type="int" Nullable="false" />
+    <Property Name="RepeatTypeName" Type="nvarchar" MaxLength="20" />
+    <Property Name="RepeatDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="int" Nullable="false" />
+    <Property Name="RoomName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoomDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="Building" Type="int" />
+    <Property Name="RoomType" Type="int" />
+    <Property Name="Capacity" Type="int" />
+  </EntityType>
+  <EntityType Name="RoomType">
+    <Key>
+      <PropertyRef Name="RoomTypeId" />
+    </Key>
+    <Property Name="RoomTypeId" Type="int" Nullable="false" />
+    <Property Name="RoomeTypeDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Setting">
+    <Key>
+      <PropertyRef Name="SettingsId" />
+    </Key>
+    <Property Name="SettingsId" Type="int" Nullable="false" />
+    <Property Name="SettingName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="SettingDescription" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Creator" Type="int" Nullable="false" />
+    <Property Name="Active" Type="nvarchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="StaffId" />
+    </Key>
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="StaffTitle" Type="nvarchar" MaxLength="10" />
+    <Property Name="StaffForename" Type="nvarchar" MaxLength="50" />
+    <Property Name="StaffSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="StaffEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Course" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="LastActivity" Type="datetime" />
+    <Property Name="Password" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="StudentTitle" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="StudentForename" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StudentSurname" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StudentEmail" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Course" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastActivity" Type="datetime" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Time">
+    <Key>
+      <PropertyRef Name="TimeId" />
+    </Key>
+    <Property Name="TimeId" Type="int" Nullable="false" />
+    <Property Name="TimeLiteral" Type="nvarchar" MaxLength="50" />
+    <Property Name="TimeDescription" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserTitle" Type="nvarchar" MaxLength="10" />
+    <Property Name="UserForename" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserType" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="LastLogin" Type="datetime" />
+    <Property Name="CurrentlyLoggedIn" Type="nvarchar" MaxLength="10" />
+    <Property Name="Password" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UserTypeId" />
+    </Key>
+    <Property Name="UserTypeId" Type="int" Nullable="false" />
+    <Property Name="UserTypeDescription" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+</Schema>
